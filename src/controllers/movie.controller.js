@@ -18,6 +18,13 @@ router.get("/" ,authenticate ,  async (req, res) => {
     return res.send({movies});
 });
 
+router.get("/:actor" ,authenticate ,  async (req, res) => {
+
+    const movies = await Movie.find({actors:req.params.actor}).lean().exec();
+    return res.send({movies});
+});
+
+
 
 
 module.exports = router;
